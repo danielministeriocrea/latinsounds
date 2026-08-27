@@ -6,26 +6,26 @@ The product direction is deliberately **not** a Spotify/Discogs-style database w
 
 ## Current status
 
-**Development Build 001 / scaffold.** This first commit establishes a locally runnable vertical slice, not the finished research MVP.
+**Development Build 001 / scaffold.** This is the first version-controlled foundation, not the finished research MVP.
 
-Implemented in this scaffold:
+Implemented now:
 
-- React + TypeScript + Vite application
-- Phaser 4.2.1 shop-floor prototype with keyboard movement
+- React + TypeScript + Vite application scaffold
 - alphabetical development rack UI
-- two visible YouTube IFrame API decks with custom Play/Pause
+- two-deck record loading state
 - deck volume, master volume and equal-power crossfader logic
 - Zustand mixer state
 - development-only placeholder archive records
 - YouTube URL parser
-- unit tests for crossfader calculations and YouTube URL parsing
-- Supabase dependency and environment placeholders ready for the persistence phase
+- unit test scaffold for crossfader calculations
+- Phaser, Supabase and YouTube dependencies prepared for the next implementation layer
 - responsive/raw independent-record-shop visual direction
 
 Still to implement before the research MVP can be called complete:
 
+- Phaser shop-floor navigation and rack proximity interactions
+- visible YouTube IFrame API players with custom Play/Pause
 - real verified archive dataset
-- spatial rack proximity/open interactions in Phaser
 - record detail / Side A-B workflow integrated with the shop world
 - Supabase schema, migrations, anonymous auth and RLS
 - research-event logging and meaningful-listen tracking
@@ -72,20 +72,18 @@ The service-role key is only for future server-side/local research exports and m
 
 ```text
 src/
-  components/   React UI and listening-station components
   data/         development seed archive
   domain/       archive types
-  game/         Phaser shop world
   mixer/        pure audio-control calculations
   store/        Zustand application state
-  youtube/      YouTube IFrame API adapter and URL parsing
+  youtube/      YouTube URL parsing and next player layer
 ```
 
-Next architectural layers will add `archive/`, `research/`, `lib/supabase`, `supabase/migrations`, submission workflows and export scripts while keeping game objects decoupled from persistence and playback.
+Next architectural layers add the Phaser game world, YouTube player adapter, `archive/`, `research/`, `lib/supabase`, `supabase/migrations`, submission workflows and export scripts while keeping game objects decoupled from persistence and playback.
 
 ## YouTube constraint
 
-Music playback must use the official YouTube IFrame Player API. The application must not download, extract, proxy or conceal YouTube media. Video remains visible as part of the listening-station/CRT metaphor, while custom controls live outside the iframe.
+Music playback will use the official YouTube IFrame Player API. The application must not download, extract, proxy or conceal YouTube media. Video should remain visible as part of the listening-station/CRT metaphor, while custom controls live outside the iframe.
 
 ## Research principle
 
